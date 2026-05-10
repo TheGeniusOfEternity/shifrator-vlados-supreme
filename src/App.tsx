@@ -108,7 +108,7 @@ const App = () => {
       console.error(error);
       const message = `Ошибка ${mode === "encode" ? "" : "де"}шифрования, проверьте ввод!`
       showError(message)
-      return ""
+      return message
     }
   }
 
@@ -158,8 +158,10 @@ const App = () => {
             value={algorithm?.value}
             optionLabel="label"
             placeholder="Выберите алгоритм"
-            onChange={(e) =>
-              setAlgorithm(algorithms.find(alg => alg.value === e.value) ?? null)}
+            onChange={(e) => {
+              setAlgorithm(algorithms.find(alg => alg.value === e.value) ?? null)
+              setError(null)
+            }}
             options={algorithms}
           />
           <OverlayPanel
@@ -187,7 +189,10 @@ const App = () => {
           <InputText
             value={key}
             placeholder="Введите ключ шифрования"
-            onChange={(e) => setKey(e.target.value)}
+            onChange={(e) => {
+              setKey(e.target.value)
+              setError(null)
+            }}
           />
           <OverlayPanel
             className="overlay-panel"
@@ -239,6 +244,7 @@ const App = () => {
       <Button
         onClick={() => {
           const data = computeOutput()
+          console.log(data)
           if (data.length > 0) setOutput(data)
           else showError("Неверный ввод!")
           setCopied(false)
