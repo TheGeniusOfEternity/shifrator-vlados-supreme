@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { PrimeReactProvider } from 'primereact/api';
 import App from './App';
 
-import 'primereact/resources/themes/arya-purple/theme.css';
+import 'primereact/resources/themes/lara-dark-purple/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import './index.css';
